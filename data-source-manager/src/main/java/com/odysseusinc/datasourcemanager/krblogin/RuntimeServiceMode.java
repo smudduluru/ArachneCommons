@@ -16,22 +16,12 @@
  * Company: Odysseus Data Services, Inc.
  * Product Owner/Architecture: Gregory Klebanov
  * Authors: Anastasiia Klochkova
- * Created: December 24, 2018
+ * Created: September 26, 2018
  *
  */
 
-package com.odysseusinc.arachne.commons.utils;
+package com.odysseusinc.datasourcemanager.krblogin;
 
-public enum ErrorMessages {
-    BAD_CREDENTIALS("Bad credentials"), USER_NOT_REGISTERED("user not registered");
-
-    private final String message;
-
-    ErrorMessages(String message) {
-        this.message = message;
-    }
-
-    public String getMessage() {
-        return message;
-    }
+public enum RuntimeServiceMode {
+    SINGLE, ISOLATED
 }

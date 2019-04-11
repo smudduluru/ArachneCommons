@@ -16,22 +16,28 @@
  * Company: Odysseus Data Services, Inc.
  * Product Owner/Architecture: Gregory Klebanov
  * Authors: Anastasiia Klochkova
- * Created: December 24, 2018
+ * Created: September 17, 2018
  *
  */
 
-package com.odysseusinc.arachne.commons.utils;
+package com.odysseusinc.logging.event;
 
-public enum ErrorMessages {
-    BAD_CREDENTIALS("Bad credentials"), USER_NOT_REGISTERED("user not registered");
 
-    private final String message;
+import com.odysseusinc.logging.LogLevel;
 
-    ErrorMessages(String message) {
-        this.message = message;
+public class FailedDbConnectEvent extends LoggingEvent {
+    private String exception;
+
+    public FailedDbConnectEvent(Object source, LogLevel logLevel, String exception) {
+        super(source, logLevel);
+        this.exception = exception;
     }
 
-    public String getMessage() {
-        return message;
+    public FailedDbConnectEvent(Object source, String exception) {
+        this(source, LogLevel.INFO, exception);
+    }
+
+    public String getException() {
+        return exception;
     }
 }

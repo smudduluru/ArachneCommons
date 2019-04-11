@@ -16,22 +16,25 @@
  * Company: Odysseus Data Services, Inc.
  * Product Owner/Architecture: Gregory Klebanov
  * Authors: Anastasiia Klochkova
- * Created: December 24, 2018
+ * Created: August 28, 2018
  *
  */
 
-package com.odysseusinc.arachne.commons.utils;
+package com.odysseusinc.logging.event;
 
-public enum ErrorMessages {
-    BAD_CREDENTIALS("Bad credentials"), USER_NOT_REGISTERED("user not registered");
+import com.odysseusinc.logging.LogLevel;
+import org.springframework.context.ApplicationEvent;
 
-    private final String message;
 
-    ErrorMessages(String message) {
-        this.message = message;
+public abstract class LoggingEvent extends ApplicationEvent {
+    private LogLevel logLevel;
+
+    public LoggingEvent(Object source, LogLevel logLevel) {
+        super(source);
+        this.logLevel = logLevel;
     }
 
-    public String getMessage() {
-        return message;
+    public LogLevel getLogLevel() {
+        return this.logLevel;
     }
 }

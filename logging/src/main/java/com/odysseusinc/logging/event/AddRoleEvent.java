@@ -16,22 +16,33 @@
  * Company: Odysseus Data Services, Inc.
  * Product Owner/Architecture: Gregory Klebanov
  * Authors: Anastasiia Klochkova
- * Created: December 24, 2018
+ * Created: August 29, 2018
  *
  */
 
-package com.odysseusinc.arachne.commons.utils;
+package com.odysseusinc.logging.event;
 
-public enum ErrorMessages {
-    BAD_CREDENTIALS("Bad credentials"), USER_NOT_REGISTERED("user not registered");
+import com.odysseusinc.logging.LogLevel;
 
-    private final String message;
+public class AddRoleEvent extends LoggingEvent {
+    private long id;
+    private String name;
 
-    ErrorMessages(String message) {
-        this.message = message;
+    public AddRoleEvent(Object source, LogLevel logLevel, long id, String name) {
+        super(source, logLevel);
+        this.id = id;
+        this.name = name;
     }
 
-    public String getMessage() {
-        return message;
+    public AddRoleEvent(Object source, long id, String name) {
+        this(source, LogLevel.INFO, id, name);
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 }
